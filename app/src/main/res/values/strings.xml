@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">imageApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="main_text">sample</string>
+    <string name="change_text">change</string>
+    <string name="title_activity_imgpro">ImgproActivity</string>
+    <string name="description">anyStringValue</string>>
+</resources>
