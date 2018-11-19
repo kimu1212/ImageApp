@@ -78,10 +78,10 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
         super.onActivityResult(requestCode, resultCode, resultData)
         if (requestCode == RESULT_PICK_IMAGEFILE && resultCode == Activity.RESULT_OK) {
-            Log.d("TAG","in resultCode")
+            Log.d("TAG", "in resultCode")
             if (resultData?.data != null) {
                 try {
-                    Log.d("TAG","in try")
+                    Log.d("TAG", "in try")
                     val uri: Uri? = resultData.data
                     val pfDescriptor: ParcelFileDescriptor = contentResolver.openFileDescriptor(uri, "r")
                     val fileDescriptor = pfDescriptor.fileDescriptor
