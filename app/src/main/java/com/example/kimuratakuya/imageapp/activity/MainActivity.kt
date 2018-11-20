@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     private val REQUEST_CODE = 0 // TODO: 編集画面への遷移
     private val RESULT_PICK_IMAGEFILE = 1001
+    private val RESULT_EDIT_IMAGE = 1002
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,26 +70,19 @@ class MainActivity : AppCompatActivity() {
      * @param img: 画像データ
      * 編集画面に画像データを追加
      */
-    private fun transitionImgPro(img: Bitmap?) { // TODO: 画像編集
+    private fun transitionImgPro(img: Uri?) { // TODO: 画像編集
         val intent = Intent(this, ImgproActivity::class.java)
-        intent.putExtra("IMG_DATA", img)
-        startActivity(intent)
+        intent.putExtra("IMG", img)
+        Log.d("debug", "in transition")
+        startActivityForResult(intent, RESULT_EDIT_IMAGE)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
         super.onActivityResult(requestCode, resultCode, resultData)
         if (requestCode == RESULT_PICK_IMAGEFILE && resultCode == Activity.RESULT_OK) {
-            Log.d("TAG", "in resultCode")
             if (resultData?.data != null) {
                 try {
-                    Log.d("TAG", "in try")
-                    val uri: Uri? = resultData.data
-                    val pfDescriptor: ParcelFileDescriptor = contentResolver.openFileDescriptor(uri, "r")
-                    val fileDescriptor = pfDescriptor.fileDescriptor
-                    val bmp = BitmapFactory.decodeFileDescriptor(fileDescriptor)
-                    pfDescriptor.close()
-                    imv.setImageBitmap(bmp)
-                    transitionImgPro(bmp)
+                    transitionImgPro(resultData.data)
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
