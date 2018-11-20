@@ -1,4 +1,5 @@
 package com.example.kimuratakuya.imageapp.activity
+
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
@@ -29,7 +30,7 @@ class ImgproActivity : AppCompatActivity() {
      * @param uri Bitmapのパス
      * ギャラリーで選択した画像の描画
      */
-    private fun displayBitmap(uri: Uri?){
+    private fun displayBitmap(uri: Uri?) {
         val pfDescriptor: ParcelFileDescriptor = contentResolver.openFileDescriptor(uri, "r")
         val fileDescriptor = pfDescriptor.fileDescriptor
         val bmp = BitmapFactory.decodeFileDescriptor(fileDescriptor)

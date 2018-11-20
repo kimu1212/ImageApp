@@ -2,27 +2,20 @@ package com.example.kimuratakuya.imageapp.activity
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
-import android.os.ParcelFileDescriptor
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.ImageView
 import android.widget.Toast
 import com.example.kimuratakuya.imageapp.R
 import android.util.Log
 
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.content_main.*
 import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
-
-    private val REQUEST_CODE = 0 // TODO: 編集画面への遷移
     private val RESULT_PICK_IMAGEFILE = 1001
     private val RESULT_EDIT_IMAGE = 1002
 
